@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "67e5db335e30b8eba328f5e3ff11dcac",
+    "revision": "24a3c84ac674da72ec88905fb0bfcb6d",
     "url": "/piling.js-importer/index.html"
   },
   {
-    "revision": "2e1716fe868eebfce85e",
+    "revision": "74bf9e1976913b7970f7",
     "url": "/piling.js-importer/static/css/main.6d6c33d3.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/piling.js-importer/static/js/2.64f57a2d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2e1716fe868eebfce85e",
-    "url": "/piling.js-importer/static/js/main.b38cfe10.chunk.js"
+    "revision": "74bf9e1976913b7970f7",
+    "url": "/piling.js-importer/static/js/main.ff176596.chunk.js"
   },
   {
     "revision": "a9ee1a48eebf3863830a",
