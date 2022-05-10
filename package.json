@@ -7,16 +7,21 @@
     "svelte",
     "rollup"
   ],
-  "author": [
+  "homepage": "https://umb-cs410-fritz.github.io/piling.js-importer/",
+  "author": {
+    "name": "Fritz Lekschas",
+    "url": "https://lekschas.de"
+  },
+  "contributors": [
     {
-      "name": "Fritz Lekschas",
-      "url": "https://lekschas.de"
+      "name": "Emily Gagne",
+      "email": "Emily.Gagne001@umb.edu"
     }
   ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/flekschas/piling.js-svelte.git"
+    "url": "https://github.com/umb-cs410-fritz/piling.js-importer.git"
   },
   "dependencies": {
     "piling.js": "~0.7.9",
@@ -51,6 +56,7 @@
     "start": "sirv public",
     "start:dev": "sirv public --dev",
     "lint": "eslint src/*",
-    "deploy": "npm run build; touch public/.nojekyll; gh-pages -d public -t --git git"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public -t --git git"
   }
 }
