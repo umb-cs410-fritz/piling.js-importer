@@ -1,39 +1,39 @@
-import {
-  //createLibrary,
-  //createLibraryFromState,
-  createImageRenderer,
-  createLibraryAsync
-} from 'piling.js';
+import createPilingJs, { createImageRenderer } from './piling.js';
 
 // prettier-ignore
 const items = [
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000253413.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000533739.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000314530.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000418512.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000454273.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000219654.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000558596.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000392493.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000115639.jpg' },
-  { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000228398.jpg' },
+  { src: 'https://i.imgur.com/vpl3gXx.jpg' },
+  { src: 'https://i.imgur.com/pGvZTan.jpg' },
+  { src: 'https://i.imgur.com/aixQGmV.jpg' },
+  { src: 'https://i.imgur.com/RXnfMyC.jpg' },
+  { src: 'https://i.imgur.com/Lp0ZNxW.jpg' },
+  { src: 'https://i.imgur.com/EUvVhoO.jpg' },
+  { src: 'https://i.imgur.com/kYPFr6p.jpg' },
+  { src: 'https://i.imgur.com/gaOAias.jpg' },
+  { src: 'https://i.imgur.com/u9CuYen.jpg' },
+  { src: 'https://i.imgur.com/mlsTZ8H.jpg' }
 ];
 
 let piling;
 
-export const create = (el, state) => {
-  if(Object.keys(state).length !== 0) {
+const create = async (element, state) => {
+  if (Object.keys(state).length !== 0) {
     const piles = piling.get("piles");
     const items = piling.get("items");
-    piling.importState({...state, piles, items, itemRenderer: createImageRenderer()});
+    piling.importState(
+      {
+        ...state,
+        piles,
+        items,
+        itemRenderer: createImageRenderer()
+      });
   } else {
-    piling = createLibraryAsync(el, {
+    piling = createPilingJs(element, {
       renderer: createImageRenderer(),
       items,
-      darkMode: false,
-    }).then(res => {
-      piling = res;
+      darkMode: true,
     });
   }
-  return piling;
 };
+
+export default create;

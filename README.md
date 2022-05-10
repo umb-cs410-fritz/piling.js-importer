@@ -1,54 +1,32 @@
-# Piling.js React Template
+# Piling.js Svelte Template with Rollup
 
-This template demonstrates how [piling.js](https://github.com/flekschas/piling.js) can be used within a [React](https://reactjs.org/) app.
+This template demonstrates how [piling.js](https://github.com/flekschas/piling.js) can be used within a [Svelte](https://svelte.dev/) app.
 
-To keep things simple, the React app was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Live Demo:** https://flekschas.github.io/piling.js-svelte/
 
-**Live Demo:** https://flekschas.github.io/piling.js-react/
+## Getting Started
+
+```
+git clone https://github.com/flekschas/piling.js-svelte
+cd piling.js-svelte
+npm install
+npm run dev
+```
 
 ## How To
 
-It's very simple to use Piling.js within a React App. In your React component that should host Piling.js, create a DOM element and subscribe to its reference as follows:
-
-```JSX
-import createPilingInterface from './piling-interface.js';
-import './piling-wrapper.css';
-
-export default function Component() {
-  const pilingInitHandler = useCallback(async (element) => {
-    if (!element) return;
-    const piling = await createPilingInterface(element);
-    return () => piling.destroy(); // Free resources
-  }, []);
-
-  return <div className="piling-wrapper" ref={pilingInitHandler} />;
-}
-```
-
-In `piling-wrapper.css` you specify the style of the piling-wrapper component
-```css
-.piling-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-```
-
-In `piling-interface.js` you would then implement your piling interface and export a function that initializes the interface using the reference to the dom element.
+Everything works as expected except for one thing: you must import Piling.js from `src/piling.js` instead of a node module. Hence, do the following (pay attention to the `./` that preceds `piling.js`):
 
 ```javascript
-import createPilingJs, { createLibraryAsync, createImageRenderer } from 'piling.js';
-
-export default async function create(element) {
-  return createLibraryAsync(element, {
-    renderer: createImageRenderer(),
-    items: [
-      { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000253413.jpg' },
-      { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000533739.jpg' },
-      { src: 'https://storage.googleapis.com/pilingjs/coco-cars/000000314530.jpg' }
-    ]
-  });
-}
+import createPiling from './piling.js';
 ```
 
-Details on how to configure the piling interface you can find at https://piling.js.org/docs
+instead of 
+
+```javascript
+import createPiling from 'piling.js';
+```
+
+#### Why?
+
+[Piling.js](https://github.com/flekschas/piling.js) uses [PixiJS](https://github.com/pixijs) for WebGL rendering. Unfortunately, PixiJS cannot be bundled with Rollup. (Or at least I haven't found out how...) However, Svelte apps are typically bundled with Rollup. Therefore, we cannot directly import Piling.js within our Svelte app as that would subsequently import PixiJS, which fails. To circumvent this issue, we are loading Piling.js from unpkg prior to loading the bundled Svelte app. In `src/piling.js`, we then expose the global exports from Piling.js to mimic the export from the Piling.js node modules.

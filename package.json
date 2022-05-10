@@ -1,50 +1,56 @@
 {
-  "name": "piling.js-react",
+  "name": "piling.js-svelte",
   "version": "0.1.0",
-  "description": "Template for using Piling.js in a React app",
+  "description": "Template for using piling.js in a Svelte app",
   "keywords": [
     "piling.js",
-    "react"
+    "svelte",
+    "rollup"
   ],
-  "author": "Fritz Lekschas",
+  "author": [
+    {
+      "name": "Fritz Lekschas",
+      "url": "https://lekschas.de"
+    }
+  ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/flekschas/piling.js-react.git"
+    "url": "git://github.com/flekschas/piling.js-svelte.git"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "piling.js": "^0.10.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build; touch build/.nojekyll; gh-pages -d build -t --git git"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "piling.js": "~0.7.9",
+    "pixi.js": "~5.1.6",
+    "pub-sub-es": "~1.2.1",
+    "umap-js": "~1.3.2"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-svelte3": "^2.7.3",
+    "gh-pages": "^3.1.0",
+    "npm-run-all": "^4.1.5",
+    "page": "^1.11.4",
+    "prettier": "^2.0.5",
+    "prettier-plugin-svelte": "^1.1.0",
+    "rollup": "^2.18.2",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-livereload": "^1.3.0",
+    "rollup-plugin-node-resolve": "^5.0.0",
+    "rollup-plugin-string": "^3.0.0",
+    "rollup-plugin-svelte": "~6.1.1",
+    "rollup-plugin-terser": "^6.1.0",
+    "sirv-cli": "^1.0.3",
+    "svelte": "^3.4.1"
   },
-  "homepage": "https://flekschas.github.io/piling.js-react"
+  "scripts": {
+    "build": "rollup -c",
+    "autobuild": "rollup -c -w",
+    "dev": "run-p start:dev autobuild",
+    "start": "sirv public",
+    "start:dev": "sirv public --dev",
+    "lint": "eslint src/*",
+    "deploy": "npm run build; touch public/.nojekyll; gh-pages -d public -t --git git"
+  }
 }
