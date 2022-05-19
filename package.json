@@ -24,7 +24,7 @@
     "url": "https://github.com/umb-cs410-fritz/piling.js-importer.git"
   },
   "dependencies": {
-    "piling.js": "~0.7.9",
+    "piling.js": "~0.10.0",
     "pixi.js": "~5.1.6",
     "pub-sub-es": "~1.2.1",
     "umap-js": "~1.3.2"
