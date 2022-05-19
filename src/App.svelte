@@ -15,7 +15,8 @@
       });
       reader.addEventListener('load', (e) => {
         const settings = JSON.parse(e.target.result);
-        createPiling(wrapper, settings);
+        createPiling(wrapper, settings.pileSettings);
+        // create sidebar from settings.sidebarSettings!
       });
       reader.readAsText(file);
     }
